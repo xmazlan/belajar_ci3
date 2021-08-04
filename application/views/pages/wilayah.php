@@ -35,7 +35,7 @@
                                             <td class="sorting_1"><?= $location->nama_wilayah ?></td>
                                             <td>
                                                 <a href="<?= BASE_URL('wilayah/edit/' . $location->id) ?>" class="btn btn-sm btn-warning">Ubah</a>
-                                                <a href="#" class="btn btn-sm btn-danger">Aksi 2</a>
+                                                <a href="<?= BASE_URL('wilayah/delete/' . $location->id) ?>" class="btn btn-sm btn-danger">Hapus</a>
                                             </td>
                                         </tr>
                                     <?php endforeach ?>
@@ -59,7 +59,7 @@
                                             <td class="sorting_1"><?= $country->nama_wilayah ?></td>
                                             <td>
                                                 <a href="<?= BASE_URL('wilayah/edit/' . $country->id) ?>" class="btn btn-sm btn-warning">Ubah</a>
-                                                <a href="#" class="btn btn-sm btn-danger">Aksi 2</a>
+                                                <a href="<?= BASE_URL('wilayah/delete/' . $country->id) ?>" class="btn btn-sm btn-danger">Hapus</a>
                                             </td>
                                         </tr>
                                     <?php endforeach ?>

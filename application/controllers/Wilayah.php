@@ -69,6 +69,13 @@ class Wilayah extends CI_Controller
             }
         }
     }
+
+    public function delete($id)
+    {
+        if ($this->wilayah_model->delete($id)) {
+            return redirect(base_url('wilayah'));
+        }
+    }
 }
 
 /* End of file Wilayah.php */

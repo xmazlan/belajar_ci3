@@ -22,4 +22,9 @@ class Wilayah_model extends CI_Model
     {
         return $this->db->update('tb_wilayah', $data, array('id' => $data['id']));
     }
+
+    public function delete($id)
+    {
+        return $this->db->delete('tb_wilayah', array('id' => $id));
+    }
 }
