@@ -41,9 +41,32 @@ class Wilayah extends CI_Controller
                 'type' => $this->input->post('type')
             );
 
-            $this->wilayah_model->create($data);
+            if ($this->wilayah_model->create($data)) {
+                return redirect(base_url('wilayah'));
+            }
+        }
+    }
 
-            return redirect(base_url('wilayah'));
+    public function edit($id)
+    {
+        $this->form_validation->set_rules('nama_wilayah', 'Wilayah', 'trim|required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $data['title']   = 'Update Wilayah';
+            $data['page']    = 'pages/wilayah_update';
+            $data['user']    = $this->user;
+            $data['wilayah'] = $this->wilayah_model->readById($id);
+
+            $this->load->view('layouts/app', $data);
+        } else {
+            $data = array(
+                'id'           => $id,
+                'nama_wilayah' => $this->input->post('nama_wilayah')
+            );
+
+            if ($this->wilayah_model->update($data)) {
+                return redirect(base_url('wilayah'));
+            }
         }
     }
 }

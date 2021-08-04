@@ -10,6 +10,16 @@ class Wilayah_model extends CI_Model
 
     public function create($data)
     {
-        $this->db->insert('tb_wilayah', $data);
+        return $this->db->insert('tb_wilayah', $data);
+    }
+
+    public function readById($id)
+    {
+        return $this->db->where('id', $id)->get('tb_wilayah')->row_object();
+    }
+
+    public function update($data = [])
+    {
+        return $this->db->update('tb_wilayah', $data, array('id' => $data['id']));
     }
 }
