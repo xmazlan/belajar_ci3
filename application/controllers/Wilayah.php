@@ -18,61 +18,54 @@ class Wilayah extends CI_Controller
         $data['title']  = 'Wilayah';
         $data['page']   = 'pages/wilayah';
         $data['user']   = $this->user;
-        $data['lokasi'] = $this->wilayah_model->read('lokasi');
-        $data['negara'] = $this->wilayah_model->read('negara');
+        $data['lokasi'] = $this->wilayah_model->read('tb_lokasi');
+        $data['negara'] = $this->wilayah_model->read('tb_negara');
 
         $this->load->view('layouts/app', $data);
     }
 
-    public function create()
+    public function create($jenis)
     {
         $this->form_validation->set_rules('nama_wilayah', 'Wilayah', 'trim|required');
-        $this->form_validation->set_rules('type', 'Tipe Wilayah', 'trim|required|in_list[lokasi,negara]');
 
         if ($this->form_validation->run() == FALSE) {
-            $data['title'] = 'Input Wilayah';
+            $data['title'] = 'Input';
+            $data['jenis'] = $jenis;
             $data['page']  = 'pages/wilayah_create';
             $data['user']  = $this->user;
 
             $this->load->view('layouts/app', $data);
         } else {
-            $data = array(
-                'nama_wilayah' => $this->input->post('nama_wilayah'),
-                'type' => $this->input->post('type')
-            );
-
-            if ($this->wilayah_model->create($data)) {
+            if ($this->wilayah_model->create($jenis)) {
                 return redirect(base_url('wilayah'));
+            } else {
+                return 'terjadi kesalahan';
             }
         }
     }
 
-    public function edit($id)
+    public function edit($jenis, $id)
     {
         $this->form_validation->set_rules('nama_wilayah', 'Wilayah', 'trim|required');
 
         if ($this->form_validation->run() == FALSE) {
-            $data['title']   = 'Update Wilayah';
+            $data['title']   = 'Update';
+            $data['jenis'] = $jenis;
             $data['page']    = 'pages/wilayah_update';
             $data['user']    = $this->user;
-            $data['wilayah'] = $this->wilayah_model->readById($id);
+            $data['wilayah'] = $this->wilayah_model->readById($id, $jenis);
 
             $this->load->view('layouts/app', $data);
         } else {
-            $data = array(
-                'id'           => $id,
-                'nama_wilayah' => $this->input->post('nama_wilayah')
-            );
-
-            if ($this->wilayah_model->update($data)) {
+            if ($this->wilayah_model->update($id, $jenis)) {
                 return redirect(base_url('wilayah'));
             }
         }
     }
 
-    public function delete($id)
+    public function delete($jenis, $id)
     {
-        if ($this->wilayah_model->delete($id)) {
+        if ($this->wilayah_model->delete($id, $jenis)) {
             return redirect(base_url('wilayah'));
         }
     }

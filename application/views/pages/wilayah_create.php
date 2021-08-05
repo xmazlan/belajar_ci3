@@ -15,39 +15,22 @@
             <!-- Illustrations -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Judul</h6>
+                    <h6 class="m-0 font-weight-bold text-primary"><?= ucwords($jenis) ?></h6>
                 </div>
                 <div class="card-body">
                     <div class="card-body">
-                        <form method="post" accept-charset="utf-8" action="<?= BASE_URL('wilayah/create') ?>">
+                        <form method="post" accept-charset="utf-8" action="<?= BASE_URL('wilayah/create/' . $jenis) ?>">
 
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">nama wilayah</label>
+                                <label class="col-sm-2 col-form-label">nama <?= $jenis; ?></label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="nama_wilayah" class="form-control" placeholder="nama wilayah" value="<?= set_value('nama_wilayah') ?>">
+                                    <input type="text" name="nama_wilayah" class="form-control" value="<?= set_value('nama_wilayah') ?>" autofocus>
                                     <?= form_error('nama_wilayah', '<small class="text-danger">', '</small>') ?>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Jenis wilayah</label>
-                                <div class="col-sm-10">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="type" value="lokasi" <?= set_radio('type', 'lokasi') ?>>
-                                        <label class="form-check-label">
-                                            lokasi
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="type" value="negara" <?= set_radio('type', 'negara') ?>>
-                                        <label class="form-check-label">
-                                            negara
-                                        </label>
-                                    </div>
-                                    <?= form_error('type', '<small class="text-danger">', '</small>') ?>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <input type="submit" value="tambah" class="btn btn-success">
+                                <input type="submit" value="Simpan" class="btn btn-success">
+                                <a href="<?= BASE_URL('wilayah') ?>" class="btn btn-warning ml-3">Batal</a>
                             </div>
                         </form>
                     </div>

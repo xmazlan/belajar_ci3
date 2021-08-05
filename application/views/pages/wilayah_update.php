@@ -15,27 +15,22 @@
             <!-- Illustrations -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Judul</h6>
+                    <h6 class="m-0 font-weight-bold text-primary"><?= $jenis; ?></h6>
                 </div>
                 <div class="card-body">
                     <div class="card-body">
-                        <form method="post" accept-charset="utf-8" action="<?= BASE_URL('wilayah/edit/' . $wilayah->id) ?>">
+                        <form method="post" accept-charset="utf-8" action="<?= BASE_URL('wilayah/edit/' . $jenis . '/' . $wilayah->id) ?>">
 
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">nama wilayah</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="nama_wilayah" class="form-control" placeholder="nama wilayah" value="<?= set_value('nama_wilayah', $wilayah->nama_wilayah) ?>">
+                                    <input type="text" name="nama_wilayah" class="form-control" placeholder="nama wilayah" value="<?= set_value('nama_wilayah', $wilayah->nama) ?>">
                                     <?= form_error('nama_wilayah', '<small class="text-danger">', '</small>') ?>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Jenis wilayah</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" value="<?= $wilayah->type ?>" readonly>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <input type="submit" value="ubah" class="btn btn-warning">
+                                <input type="submit" value="Ubah" class="btn btn-success">
+                                <a href="<?= BASE_URL('wilayah') ?>" class="btn btn-warning ml-3">Batal</a>
                             </div>
                         </form>
                     </div>
