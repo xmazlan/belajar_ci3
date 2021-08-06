@@ -41,5 +41,6 @@
         </div>
 
     </div>
+</div>
 
-    <!-- /.container-fluid -->
+<!-- /.container-fluid -->
