@@ -41,13 +41,13 @@
                                         <td><?= $invest->no_dan_tgl ?></td>
                                         <td><?= $invest->bidang_usaha ?></td>
                                         <td><?= $invest->alamat_kantor ?></td>
-                                        <td><?= $invest->nama_wilayah ?></td>
+                                        <td><?= $invest->nama_lokasi ?></td>
                                         <td><?= ucwords($invest->mata_uang) ?> <?= $invest->investasi_tambahan ?></td>
                                         <td><?= ucwords($invest->mata_uang) ?> <?= $invest->investasi_total ?></td>
                                         <td><?= $invest->tki ?></td>
                                         <td><?= $invest->tka ?></td>
                                         <td>
-                                            <a href="#" class="btn btn-sm btn-warning">Ubah</a>
+                                            <a href="<?= BASE_URL('investasi/pmdn_update/' . $invest->id_investasi) ?>" class="btn btn-sm btn-warning">Ubah</a>
                                             <a href="#" class="btn btn-sm btn-danger">Hapus</a>
                                         </td>
                                     </tr>

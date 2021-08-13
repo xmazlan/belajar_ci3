@@ -19,7 +19,7 @@
                 </div>
                 <div class="card-body">
                     <div class="card-body">
-                        <form method="post" accept-charset="utf-8" action="<?= BASE_URL('investasi/pmdn_create') ?>">
+                        <form method="post" accept-charset="utf-8" action="<?= BASE_URL('investasi/pmdn_update/' . $investment->id_investasi) ?>">
 
                             <div class="form-group row">
                                 <?php echo validation_errors('<button type="button" class="btn btn-outline-danger">', '</button>'); ?>
@@ -28,34 +28,34 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">nama perusahaan</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="nama_perusahaan" class="form-control" placeholder="nama perusahaan" value="<?= set_value('nama_perusahaan') ?>">
+                                    <input type="text" name="nama_perusahaan" class="form-control" placeholder="nama perusahaan" value="<?= set_value('nama_perusahaan', $investment->nama_perusahaan) ?>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">nomor/tanggal</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="no_dan_tgl" class="form-control" placeholder="nomor/tanggal" value="<?= set_value('no_dan_tgl') ?>">
+                                    <input type="text" name="no_dan_tgl" class="form-control" placeholder="nomor/tanggal" value="<?= set_value('no_dan_tgl', $investment->no_dan_tgl) ?>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">bidang usaha</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="bidang_usaha" class="form-control" placeholder="bidang usaha" value="<?= set_value('bidang_usaha') ?>">
+                                    <input type="text" name="bidang_usaha" class="form-control" placeholder="bidang usaha" value="<?= set_value('bidang_usaha', $investment->bidang_usaha) ?>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">alamat kantor</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="alamat_kantor" class="form-control" placeholder="alamat kantor" value="<?= set_value('alamat_kantor') ?>">
+                                    <input type="text" name="alamat_kantor" class="form-control" placeholder="alamat kantor" value="<?= set_value('alamat_kantor', $investment->alamat_kantor) ?>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Lokasi</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control" name="kode_lokasi" required>
-                                        <option value="">-- Pilih wilayah --</option>
+                                    <select class="form-control" name="kode_lokasi">
                                         <?php foreach ($locations as $location) : ?>
-                                            <option value="<?= $location->id ?>" <?= set_select('kode_lokasi', $location->id) ?>><?= $location->nama_lokasi ?></option>
+                                            <?php $location->id == $investment->kode_lokasi ? $selected = 'selected' : $selected = ''; ?>
+                                            <option <?= set_select('kode_lokasi') ?> value="<?= $location->id ?>" <?= $selected; ?>><?= $location->nama_lokasi ?></option>
                                         <?php endforeach ?>
                                     </select>
                                 </div>
@@ -63,38 +63,38 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">investasi tambahan</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="investasi_tambahan" class="form-control" placeholder="investasi tambahan" value="<?= set_value('investasi_tambahan', 0) ?>">
+                                    <input type="text" name="investasi_tambahan" class="form-control" placeholder="investasi tambahan" value="<?= set_value('investasi_tambahan', $investment->investasi_tambahan, 0) ?>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">investasi total</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="investasi_total" class="form-control" placeholder="investasi total" value="<?= set_value('investasi_total', 0) ?>">
+                                    <input type="text" name="investasi_total" class="form-control" placeholder="investasi total" value="<?= set_value('investasi_total', $investment->investasi_total, 0) ?>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">tki</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="tki" class="form-control" placeholder="tki" value="<?= set_value('tki', 0) ?>">
+                                    <input type="text" name="tki" class="form-control" placeholder="tki" value="<?= set_value('tki', $investment->tki, 0) ?>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">tka</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="tka" class="form-control" placeholder="tka" value="<?= set_value('tka', 0) ?>">
+                                    <input type="text" name="tka" class="form-control" placeholder="tka" value="<?= set_value('tka', $investment->tka, 0) ?>">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">mata uang</label>
                                 <div class="col-sm-10">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="mata_uang" value="usd" <?= set_radio('mata_uang', 'usd') ?>>
+                                        <input class="form-check-input" type="radio" name="mata_uang" value="usd" <?= set_radio('mata_uang', 'usd', $investment->mata_uang == 'usd') ?>>
                                         <label class="form-check-label">
                                             USD
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="mata_uang" value="rp" <?= set_radio('mata_uang', 'rp', true) ?>>
+                                        <input class="form-check-input" type="radio" name="mata_uang" value="rp" <?= set_radio('mata_uang', 'rp', $investment->mata_uang == 'rp') ?>>
                                         <label class="form-check-label">
                                             RP
                                         </label>
