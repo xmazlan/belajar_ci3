@@ -111,4 +111,11 @@ class Investasi extends CI_Controller
             }
         }
     }
+
+    public function delete($jenis, $id)
+    {
+        if ($this->investasi_model->delete($id)) {
+            return redirect(base_url('investasi/' . $jenis));
+        }
+    }
 }

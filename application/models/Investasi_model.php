@@ -35,4 +35,9 @@ class Investasi_model extends CI_Model
     {
         return $this->db->update('tb_investasi', $data, ['id' => $data['id']]);
     }
+
+    public function delete($id)
+    {
+        return $this->db->delete('tb_investasi', array('id' => $id));
+    }
 }

@@ -48,7 +48,7 @@
                                         <td><?= $invest->tka ?></td>
                                         <td>
                                             <a href="<?= BASE_URL('investasi/pmdn_update/' . $invest->id_investasi) ?>" class="btn btn-sm btn-warning">Ubah</a>
-                                            <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+                                            <a href="<?= BASE_URL('investasi/delete/pmdn/' . $invest->id_investasi) ?>" class="btn btn-sm btn-danger">Hapus</a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>
