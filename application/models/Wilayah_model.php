@@ -5,6 +5,9 @@ class Wilayah_model extends CI_Model
 {
     public function read(String $tabel)
     {
+        if ($tabel == 'tb_negara') {
+            return $this->db->where('nama_negara !=', 'Indonesia')->get($tabel)->result();
+        }
         return $this->db->get($tabel)->result();
     }
 

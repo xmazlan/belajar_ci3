@@ -56,7 +56,7 @@ function nav_item($segment)
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu Investasi:</h6>
                 <a class="collapse-item" href="<?= BASE_URL('investasi/pmdn') ?>">PMDN</a>
-                <a class="collapse-item" href="#">PMA</a>
+                <a class="collapse-item" href="<?= BASE_URL('investasi/pma') ?>">PMA</a>
             </div>
         </div>
     </li>
